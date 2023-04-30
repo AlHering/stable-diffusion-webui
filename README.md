@@ -1,3 +1,9 @@
+# IMPORTANT NOTES
+- this repo is a highly customized version of AUTOMATIC1111's Stable Diffusion WebUI (https://github.com/AUTOMATIC1111/stable-diffusion-webui/) 
+- this repo is strongly geared towards personal infrastructure preferences and experiments and thus not meant for public use (yet)
+- this repo is work in process
+- this repo focusses on support for linux
+
 # Stable Diffusion web UI
 A browser interface based on Gradio library for Stable Diffusion.
 
