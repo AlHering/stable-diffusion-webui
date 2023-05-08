@@ -82,7 +82,7 @@ printf "\e[1m\e[34mTested on Debian 11 (Bullseye)\e[0m"
 printf "\n%s\n" "${delimiter}"
 
 # Do not run as root
-if [[ $(id -u) -eq 0 && can_run_as_root -eq 0 ]]
+if [[ $(id -u) -eq 0 && can_run_as_root -eq 0 && ! ${RUNNING_IN_DOCKER} ]]
 then
     printf "\n%s\n" "${delimiter}"
     printf "\e[1m\e[31mERROR: This script must not be launched as root, aborting...\e[0m"
@@ -118,7 +118,7 @@ case "$gpu_info" in
 esac
 if echo "$gpu_info" | grep -q "AMD" && [[ -z "${TORCH_COMMAND}" ]]
 then
-    export TORCH_COMMAND="pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm5.2"
+    export TORCH_COMMAND="pip install --no-cache-dir torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm5.2"
 fi  
 
 for preq in "${GIT}" "${python_cmd}"
